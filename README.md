@@ -1,1 +1,1 @@
-# greenplum-node
+# Greenplum Node

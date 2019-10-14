@@ -1,13 +1,13 @@
 # Greenplum Node
 
-Greenplum node for Greenplum Operator
+Greenplum data node for greenplum cluster
 
 ## Overview
 
 
 ## Features
-- restApi for update the  greenplum  data node
-
+- rpc broker for update the  greenplum webOps center
+- data node for greenplum cluster
 
 ## Getting started
 

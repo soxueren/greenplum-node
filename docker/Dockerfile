@@ -29,5 +29,5 @@ RUN chmod +x /init/*.sh && \
 RUN yum clean all && rm -rf /init
 
 USER gpadmin
-
+RUN  ssh-keygen -t rsa -P ''
 CMD ["sleep","3600"]

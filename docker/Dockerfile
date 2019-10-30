@@ -1,4 +1,12 @@
-FROM centos:7
+FROM golang:1.13-alpine as builder
+
+ADD ../ $GOPATH/src/github.com/soxueren/greenplum-node
+
+WORKDIR $GOPATH/src/github.com/soxueren/greenplum-node
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o gpdb-node cmd/main.go
+
+ROM centos:7
 
 RUN yum install -y wget
 
@@ -18,6 +26,8 @@ RUN groupadd gpadmin && \
 ADD init/*.rpm /init
 
 RUN rpm -ihv /init/greenplum-db-6.0.0-rhel7-x86_64.rpm
+
+COPY --from=0 /go/src/github.com/soxueren/greenplum-node/gpdb-node  .
 
 RUN chmod 0777 /usr/local
 

@@ -38,6 +38,8 @@ RUN chmod +x /init/*.sh && \
 
 RUN yum clean all && rm -rf /init
 
+WORKDIR /home/gpadmin
+
 USER gpadmin
 
 RUN  ssh-keygen -t rsa -P ''  &&  ssh-keygen -t rsa -f .ssh/id_rsa -P '' 
